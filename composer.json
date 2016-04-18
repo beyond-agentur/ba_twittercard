@@ -1,0 +1,19 @@
+{
+  "name": "beyondagentur/ba-twittercard",
+  "description": "Add twitter card meta data to a typo3 page",
+  "type": "typo3-cms-extension",
+  "version": "0.0.1",
+  "require": {
+    "typo3/cms-core": ">=7.6.0,<8.0"
+  },
+  "replace": {
+    "ba_twittercard": "self.version",
+    "typo3-ter/ba-twittercard": "self.version"
+  },
+  "autoload": {
+    "psr-4": {
+      "BeyondAgentur\\Twittercard\\": "Classes/"
+    }
+  },
+  "homepage": "http://www.beyond-agentur.com"
+}
