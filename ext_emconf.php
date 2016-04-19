@@ -5,7 +5,7 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array (
-	'title' => 'Twitter Crads',
+	'title' => 'Twitter Cards',
 	'description' => 'This Extension adds twitter cards properties in meta-tags to the html-header and supports multilanguage-websites.',
 	'category' => 'plugin',
 	'version' => '0.0.1',

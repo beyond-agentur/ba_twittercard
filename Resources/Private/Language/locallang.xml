@@ -2,24 +2,32 @@
 <T3locallang>
 	<meta type="array">
 		<type>default</type>
-		<description>Language labels for database tables/fields belonging to extension 'jh_opengraphprotocol'</description>
+		<description>Language labels for database tables/fields belonging to extension 'ba_twittercard'</description>
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
 			<!-- TCA -->
-			<label index="pages.tab_title">Open Graph protocol</label>
-			<label index="pages.tx_jhopengraphprotocol_ogtitle">Title</label>
-			<label index="pages.tx_jhopengraphprotocol_ogtype">Type</label>
-			<label index="pages.tx_jhopengraphprotocol_ogimage">Image</label>
-			<label index="pages.tx_jhopengraphprotocol_ogdescription">Description</label>
+			<label index="pages.tab_title">Twitter Card</label>
+			<label index="pages.tx_batwittercard_title">Title</label>
+			<label index="pages.tx_batwittercard_type">Type</label>
+			<label index="pages.tx_batwittercard_type_summary_large">Summary Card with Large Image</label>
+			<label index="pages.tx_batwittercard_type_summary">Summary Card</label>
+			<label index="pages.tx_batwittercard_type_app">App Card</label>
+			<label index="pages.tx_batwittercard_type_player">Player Card</label>
+			<label index="pages.tx_batwittercard_image">Image</label>
+			<label index="pages.tx_batwittercard_description">Description</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<!-- TCA -->
-			<label index="pages.tab_title">Open Graph protocol</label>
-			<label index="pages.tx_jhopengraphprotocol_ogtitle">Titel</label>
-			<label index="pages.tx_jhopengraphprotocol_ogtype">Typ</label>
-			<label index="pages.tx_jhopengraphprotocol_ogimage">Bild</label>
-			<label index="pages.tx_jhopengraphprotocol_ogdescription">Beschreibung</label>
+			<label index="pages.tab_title">Twitter Card</label>
+			<label index="pages.tx_batwittercard_title">Titel</label>
+			<label index="pages.tx_batwittercard_type">Typ</label>
+			<label index="pages.tx_batwittercard_type_summary_large">Karte mit einem großen Bild</label>
+			<label index="pages.tx_batwittercard_type_summary">Karte</label>
+			<label index="pages.tx_batwittercard_type_app">App Karte</label>
+			<label index="pages.tx_batwittercard_type_player">Spieler Karte</label>
+			<label index="pages.tx_batwittercard_image">Bild</label>
+			<label index="pages.tx_batwittercard_description">Beschreibung</label>
 		</languageKey>
 	</data>
 </T3locallang>

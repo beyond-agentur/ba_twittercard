@@ -1,5 +1,5 @@
 <?php
-namespace Heilmann\JhOpengraphprotocol\Updates;
+namespace BeyondAgentur\Twittercard\Updates;
 
 /***************************************************************
 *  Copyright notice
@@ -27,19 +27,19 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
 * @author    Jonathan Heilmann <mail@jonathan-heilmann.de>
-* @package    tx_jhopengraphprotocol
+* @package    tx_batwittercard
 */
 class FalUpdateWizard extends \TYPO3\CMS\Install\Updates\AbstractUpdate
 {
 
-    const FOLDER_ContentUploads = '_migrated/tx_jhopengraphprotocol_uploads';
+    const FOLDER_ContentUploads = '_migrated/tx_batwittercard_uploads';
     
     const CruserId = 777;
 
     /**
      * @var string
      */
-    protected $title = 'Migrate file relations of EXT:jh_opengraphprotocol';
+    protected $title = 'Migrate file relations of EXT:ba_twittercard';
 
     /**
      * @var string
@@ -103,7 +103,7 @@ class FalUpdateWizard extends \TYPO3\CMS\Install\Updates\AbstractUpdate
         $notMigratedMediaRowsCount = $GLOBALS['TYPO3_DB']->exec_SELECTcountRows(
             'pages.uid',
             'pages',
-            'pages.tx_jhopengraphprotocol_ogimage <> \'\' AND tx_jhopengraphprotocol_ogfalimages = 0'
+            'pages.tx_batwittercard_image <> \'\' AND tx_batwittercard_falimages = 0'
         );
         if ($notMigratedMediaRowsCount > 0) {
             $description = 'There are <strong>' . $notMigratedMediaRowsCount . '</strong> page records which are using the old media relation. '
@@ -129,13 +129,13 @@ class FalUpdateWizard extends \TYPO3\CMS\Install\Updates\AbstractUpdate
         $records = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
             '*',
             'pages',
-            'pages.tx_jhopengraphprotocol_ogimage <> \'\' AND tx_jhopengraphprotocol_ogfalimages = 0'
+            'pages.tx_batwittercard_image <> \'\' AND tx_batwittercard_falimages = 0'
         );
         if ($records) {
             foreach ($records as $record) {
-                $this->migrateFiles($record, 'tx_jhopengraphprotocol_ogfalimages');
+                $this->migrateFiles($record, 'tx_batwittercard_falimages');
             }
-            $this->setCountInPagesRecord('tx_jhopengraphprotocol_ogfalimages');
+            $this->setCountInPagesRecord('tx_batwittercard_falimages');
         }
 
         return true;
@@ -167,7 +167,7 @@ class FalUpdateWizard extends \TYPO3\CMS\Install\Updates\AbstractUpdate
     }
 
     /**
-     * Ensures a new folder "fileadmin/_migrated/tx_jhopengraphprotocol_uploads" is available.
+     * Ensures a new folder "fileadmin/_migrated/tx_batwittercard_uploads" is available.
      *
      * @return void
      */
@@ -187,14 +187,14 @@ class FalUpdateWizard extends \TYPO3\CMS\Install\Updates\AbstractUpdate
      */
     protected function migrateFiles(array $record, $field)
     {
-        $filesList = $record['tx_jhopengraphprotocol_ogimage'];
+        $filesList = $record['tx_batwittercard_image'];
         $files = GeneralUtility::trimExplode(',', $filesList, true);
         
         if ($files) {
             foreach ($files as $file) {
-                if (file_exists(PATH_site . 'uploads/tx_jhopengraphprotocol/' . $file)) {
+                if (file_exists(PATH_site . 'uploads/tx_batwittercard/' . $file)) {
                     GeneralUtility::upload_copy_move(
-                            PATH_site . 'uploads/tx_jhopengraphprotocol/' . $file,
+                            PATH_site . 'uploads/tx_batwittercard/' . $file,
                             $this->targetDirectory . $file);
                 
                     $fileObject = $this->storage->getFile(self::FOLDER_ContentUploads . '/' . $file);

@@ -1,12 +1,12 @@
 
-#cat=plugin.tx_jhopengraphprotocol/type/010; type=string; label=Type;
-plugin.tx_jhopengraphprotocol.type = website
+#cat=plugin.tx_batwittercard/type/010; type=string; label=Type;
+plugin.tx_batwittercard.type = website
 
-#cat=plugin.tx_jhopengraphprotocol/image/020; type=string; label=Image;
-plugin.tx_jhopengraphprotocol.image = EXT:jh_opengraphprotocol/Resources/Public/Images/nopic.jpg
+#cat=plugin.tx_batwittercard/image/020; type=string; label=Image;
+plugin.tx_batwittercard.image = EXT:ba_twittercard/Resources/Public/Images/nopic.jpg
 
-#cat=plugin.tx_jhopengraphprotocol/sitename/030; type=string; label=Sitename;
-plugin.tx_jhopengraphprotocol.sitename =
+#cat=plugin.tx_batwittercard/sitename/030; type=string; label=Sitename;
+plugin.tx_batwittercard.sitename =
 
-#cat=plugin.tx_jhopengraphprotocol/description/040; type=string; label=Description;
-plugin.tx_jhopengraphprotocol.description =
+#cat=plugin.tx_batwittercard/description/040; type=string; label=Description;
+plugin.tx_batwittercard.description =

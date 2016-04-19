@@ -1,5 +1,5 @@
 <?php
-namespace Heilmann\JhOpengraphprotocol\Service;
+namespace BeyondAgentur\Twittercard\Service;
 
 /***************************************************************
 *  Copyright notice
@@ -28,7 +28,7 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
 * @author    Jonathan Heilmann <mail@jonathan-heilmann.de>
-* @package    tx_jhopengraphprotocol
+* @package    tx_batwittercard
 */
 class OgRendererService
 {
@@ -39,7 +39,7 @@ class OgRendererService
     public $cObj;
 
     /**
-     * Main-function to render the Open Graph protocol content.
+     * Main-function to render the Twitter Card protocol content.
      *
      * @param	string	$content
      * @param	array		$conf
@@ -47,7 +47,7 @@ class OgRendererService
      */
     public function main($content, $conf)
     {
-        $extKey = 'tx_jhopengraphprotocol';
+        $extKey = 'tx_batwittercard';
         $content = '';
         $og = array();
 
@@ -63,16 +63,16 @@ class OgRendererService
         //if there has been no return, get og properties and render output
 
         // Get title
-        if (!empty($this->cObj->data['tx_jhopengraphprotocol_ogtitle'])) {
-            $og['title'] = $this->cObj->data['tx_jhopengraphprotocol_ogtitle'];
+        if (!empty($this->cObj->data['tx_batwittercard_title'])) {
+            $og['title'] = $this->cObj->data['tx_batwittercard_title'];
         } else {
             $og['title'] = $GLOBALS['TSFE']->page['title'];
         }
         $og['title'] = htmlspecialchars($og['title']);
 
         // Get type
-        if (!empty($this->cObj->data['tx_jhopengraphprotocol_ogtype'])) {
-            $og['type'] = $this->cObj->data['tx_jhopengraphprotocol_ogtype'];
+        if (!empty($this->cObj->data['tx_batwittercard_type'])) {
+            $og['type'] = $this->cObj->data['tx_batwittercard_type'];
         } else {
             $og['type'] = $conf['type'];
         }
@@ -81,7 +81,7 @@ class OgRendererService
         // Get image
         /** @var \TYPO3\CMS\Core\Resource\FileRepository $fileRepository */
         $fileRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\FileRepository');
-        $fileObjects = $fileRepository->findByRelation('pages', 'tx_jhopengraphprotocol_ogfalimages', $GLOBALS['TSFE']->id);
+        $fileObjects = $fileRepository->findByRelation('pages', 'tx_batwittercard_falimages', $GLOBALS['TSFE']->id);
         if (count($fileObjects)) {
             foreach ($fileObjects as $key => $fileObject) {
                 /** @var \TYPO3\CMS\Core\Resource\File $fileObject */
@@ -115,8 +115,8 @@ class OgRendererService
         $og['site_name'] = htmlspecialchars($og['site_name']);
 
         // Get description
-        if (!empty($this->cObj->data['tx_jhopengraphprotocol_ogdescription'])) {
-            $og['description'] = $this->cObj->data['tx_jhopengraphprotocol_ogdescription'];
+        if (!empty($this->cObj->data['tx_batwittercard_description'])) {
+            $og['description'] = $this->cObj->data['tx_batwittercard_description'];
         } else {
             if (!empty($GLOBALS['TSFE']->page['description'])) {
                 $og['description'] = $GLOBALS['TSFE']->page['description'];
