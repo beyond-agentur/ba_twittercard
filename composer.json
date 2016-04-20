@@ -4,7 +4,7 @@
   "type": "typo3-cms-extension",
   "version": "0.0.1",
   "require": {
-    "typo3/cms-core": ">=7.6.0,<8.0"
+    "typo3/cms": ">=7.6.0,<8.0"
   },
   "replace": {
     "ba_twittercard": "self.version",
@@ -13,6 +13,12 @@
   "autoload": {
     "psr-4": {
       "BeyondAgentur\\Twittercard\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": ".Build/Web"
     }
   },
   "homepage": "http://www.beyond-agentur.com"

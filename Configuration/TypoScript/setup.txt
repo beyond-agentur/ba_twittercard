@@ -1,12 +1,12 @@
-config.htmlTag_setParams := appendString(xmlns:og="http://ogp.me/ns#")
+includeLibs.tx_batwittercard = EXT:ba_twittercard/Classes/Service/RendererService.php
 
-includeLibs.tx_batwittercard = EXT:ba_twittercard/Classes/Service/OgRendererService.php
 temp.tx_batwittercard = USER
 temp.tx_batwittercard {
-    userFunc = Heilmann\JhOpengraphprotocol\Service\OgRendererService->main
+    userFunc = BeyondAgentur\Twitttercard\Service\RendererService->main
     type = {$plugin.tx_batwittercard.type}
     image = {$plugin.tx_batwittercard.image}
     sitename = {$plugin.tx_batwittercard.sitename}
     description = {$plugin.tx_batwittercard.description}
 }
-page.669 < temp.tx_batwittercard
+
+page.668 < temp.tx_batwittercard
