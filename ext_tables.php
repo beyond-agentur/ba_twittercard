@@ -1,104 +1,162 @@
 <?php
-if ( ! defined( 'TYPO3_MODE' ) ) {
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
+if ( !defined( 'TYPO3_MODE' ) ) {
 	die( 'Access denied.' );
 }
 
 // Create array with columns
-$tempColumns = array(
-	'tx_batwittercard_type'        => array(
+$tempColumns = [
+	'tx_batwittercard_type'        => [
 		'exclude' => 1,
 		'label'   => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type',
-		'config'  => array(
+		'config'  => [
 			'type'       => 'select',
 			'renderType' => 'selectSingle',
 			'items'      => [
-				[ 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type_summary_large', 'summary-large-image' ],
-				[ 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type_summary', 'summary' ],
-				[ 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type_app', 'app' ],
-				[ 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type_player', 'player' ],
+				[
+					'LLL:EXT:' . $_EXTKEY .
+					'/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type_disabled',
+					'disabled',
+				],
+				[
+					'LLL:EXT:' . $_EXTKEY .
+					'/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type_summary_large',
+					'summary_large_image',
+				],
+				[
+					'LLL:EXT:' . $_EXTKEY .
+					'/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type_summary',
+					'summary',
+				],
+				[
+					'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type_app',
+					'app',
+				],
+				[
+					'LLL:EXT:' . $_EXTKEY .
+					'/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_type_player',
+					'player',
+				],
 			],
 			'size'       => 1,
 			'maxitems'   => 1,
-		)
-	),
-	'tx_batwittercard_title'       => array(
+		],
+	],
+	'tx_batwittercard_title'       => [
 		'exclude' => 1,
 		'label'   => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_title',
-		'config'  => array(
+		'config'  => [
 			'type' => 'input',
 			'size' => '160',
-		)
-	),
-	'tx_batwittercard_description' => array(
+		],
+	],
+	'tx_batwittercard_description' => [
 		'exclude' => 1,
-		'label'   => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_description',
-		'config'  => array(
+		'label'   => 'LLL:EXT:' . $_EXTKEY .
+		             '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_description',
+		'config'  => [
 			'type' => 'input',
 			'size' => '30',
 			'max'  => '200',
-		)
-	),
-	'tx_batwittercard_image'       => array(
+		],
+	],
+	'tx_batwittercard_site'        => [
+		'exclude' => 1,
+		'label'   => 'LLL:EXT:' . $_EXTKEY .
+		             '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_site',
+		'config'  => [
+			'type' => 'input',
+			'size' => '30',
+			'max'  => '200',
+		],
+	],
+	'tx_batwittercard_creator'     => [
+		'exclude' => 1,
+		'label'   => 'LLL:EXT:' . $_EXTKEY .
+		             '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_creator',
+		'config'  => [
+			'type' => 'input',
+			'size' => '30',
+			'max'  => '200',
+		],
+	],
+	'tx_batwittercard_image'       => [
 		'exclude' => 1,
 		'label'   => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_image',
-		'config'  => array(
+		'config'  => [
 			'type'          => 'group',
 			'internal_type' => 'file',
-			'allowed'       => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
-			'max_size'      => $GLOBALS['TYPO3_CONF_VARS']['BE']['maxFileSize'],
+			'allowed'       => $GLOBALS[ 'TYPO3_CONF_VARS' ][ 'GFX' ][ 'imagefile_ext' ],
+			'max_size'      => $GLOBALS[ 'TYPO3_CONF_VARS' ][ 'BE' ][ 'maxFileSize' ],
 			'uploadfolder'  => 'uploads/tx_batwittercard',
 			'show_thumbs'   => 1,
 			'size'          => 4,
 			'minitems'      => 0,
 			'maxitems'      => 6,
-		)
-	),
-	'tx_batwittercard_falimages'   => array(
+		],
+	],
+	'tx_batwittercard_falimages'   => [
 		'exclude' => 1,
 		'label'   => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tx_batwittercard_image',
-		'config'  => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+		'config'  => ExtensionManagementUtility::getFileFieldTCAConfig(
 			'tx_batwittercard_falimages',
-			array(
-				'appearance'    => array(
-					'enableControls' => array(
+			[
+				'appearance'    => [
+					'enableControls' => [
 						'sort' => true,
-					),
-				),
-				'foreign_types' => array(
-					'0'                                                 => array(
+					],
+				],
+				'foreign_types' => [
+					'0'                                                 => [
 						'showitem' => '
 						--palette--;;opengraphprotocolPalette,
-						--palette--;;filePalette'
-					),
-					\TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE       => array(
+						--palette--;;filePalette',
+					],
+					\TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE       => [
 						'showitem' => '
 						--palette--;;opengraphprotocolPalette,
-						--palette--;;filePalette'
-					),
-					\TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => array(
+						--palette--;;filePalette',
+					],
+					\TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
 						'showitem' => '
 						--palette--;;opengraphprotocolPalette,
-						--palette--;;filePalette'
-					),
-				),
-			),
-			$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+						--palette--;;filePalette',
+					],
+				],
+			],
+			$GLOBALS[ 'TYPO3_CONF_VARS' ][ 'GFX' ][ 'imagefile_ext' ]
 		),
-	),
-);
+	],
+];
 
 // Add columns to TCA of pages and pages_language_overlay
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns( 'pages', $tempColumns, 1 );
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes( 'pages', '--div--;LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tab_title,tx_batwittercard_title;;;;1-1-1, tx_batwittercard_type, tx_batwittercard_falimages, tx_batwittercard_description' );
+ExtensionManagementUtility::addTCAcolumns( 'pages', $tempColumns, 1 );
+ExtensionManagementUtility::addToAllTCAtypes( 'pages', '--div--;LLL:EXT:' . $_EXTKEY .
+                                                       '/Resources/Private/Language/locallang.xml:pages.tab_title, 
+                                                                               tx_batwittercard_type,
+                                                                               tx_batwittercard_title;;;;1-1-1, 
+                                                                               tx_batwittercard_description, 
+                                                                               tx_batwittercard_site, 
+                                                                               tx_batwittercard_creator, 
+                                                                               tx_batwittercard_falimages' );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns( 'pages_language_overlay', $tempColumns, 1 );
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes( 'pages_language_overlay', '--div--;LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tab_title,tx_batwittercard_title;;;;1-1-1, tx_batwittercard_type, tx_batwittercard_falimages, tx_batwittercard_description' );
+ExtensionManagementUtility::addTCAcolumns( 'pages_language_overlay', $tempColumns, 1 );
+ExtensionManagementUtility::addToAllTCAtypes( 'pages_language_overlay',
+	'--div--;LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xml:pages.tab_title,tx_batwittercard_type,
+                                                                               tx_batwittercard_title;;;;1-1-1, 
+                                                                               tx_batwittercard_description, 
+                                                                               tx_batwittercard_site, 
+                                                                               tx_batwittercard_creator, 
+                                                                               tx_batwittercard_falimages\'' );
 
 // Add static file
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile( $_EXTKEY, 'Configuration/TypoScript', 'Twitter Card' );
+ExtensionManagementUtility::addStaticFile( $_EXTKEY, 'Configuration/TypoScript',
+	'Twitter Card' );
 
 // Add new palette
-$GLOBALS['TCA']['sys_file_reference']['palettes']['opengraphprotocolPalette']             = $GLOBALS['TCA']['sys_file_reference']['palettes']['basicoverlayPalette'];
-$GLOBALS['TCA']['sys_file_reference']['palettes']['opengraphprotocolPalette']['showitem'] = '';
+$GLOBALS[ 'TCA' ][ 'sys_file_reference' ][ 'palettes' ][ 'opengraphprotocolPalette' ]               =
+	$GLOBALS[ 'TCA' ][ 'sys_file_reference' ][ 'palettes' ][ 'basicoverlayPalette' ];
+$GLOBALS[ 'TCA' ][ 'sys_file_reference' ][ 'palettes' ][ 'opengraphprotocolPalette' ][ 'showitem' ] = '';
 
-$TCA[ 'pages' ]['ctrl']['requestUpdate'] = 'tx_batwittercard_type';
+$TCA[ 'pages' ][ 'ctrl' ][ 'requestUpdate' ] = 'tx_batwittercard_type';

@@ -9,7 +9,10 @@
 			<!-- TCA -->
 			<label index="pages.tab_title">Twitter Card</label>
 			<label index="pages.tx_batwittercard_title">Title</label>
+			<label index="pages.tx_batwittercard_site">Twitter Page (@twittername)</label>
+			<label index="pages.tx_batwittercard_creator">Creator Page (@twittername)</label>
 			<label index="pages.tx_batwittercard_type">Type</label>
+			<label index="pages.tx_batwittercard_type_disabled">Disabled</label>
 			<label index="pages.tx_batwittercard_type_summary_large">Summary Card with Large Image</label>
 			<label index="pages.tx_batwittercard_type_summary">Summary Card</label>
 			<label index="pages.tx_batwittercard_type_app">App Card</label>
@@ -21,7 +24,10 @@
 			<!-- TCA -->
 			<label index="pages.tab_title">Twitter Card</label>
 			<label index="pages.tx_batwittercard_title">Titel</label>
+			<label index="pages.tx_batwittercard_site">Twitter Seite (@twittername)</label>
+			<label index="pages.tx_batwittercard_creator">Ersteller Seite (@twittername)</label>
 			<label index="pages.tx_batwittercard_type">Typ</label>
+			<label index="pages.tx_batwittercard_type_disabled">Deaktiviert</label>
 			<label index="pages.tx_batwittercard_type_summary_large">Karte mit einem großen Bild</label>
 			<label index="pages.tx_batwittercard_type_summary">Karte</label>
 			<label index="pages.tx_batwittercard_type_app">App Karte</label>
